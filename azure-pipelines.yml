@@ -1,0 +1,56 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  azureSubscription: 'ead1b2ac-1011-4410-8b3d-69c3f37c505a'
+
+  # Web app name
+  webAppName: 'bespin-test'
+
+  # Environment name
+  environmentName: 'bespin-test'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    env
+    az login
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+
+
+
+# stages:
+# - stage: Infrastructure
+#   displayName: Setting up Infrastructure
+#   jobs:
+#   - job: MavenPackageAndPublishArtifacts
+#     displayName: Maven Package and Publish Artifacts
+#     pool:
+#       vmImage: $(vmImageName)
+#     container: maven:3.8.1-openjdk-17-slim
+#     variables:
+#       - name: JAVA_HOME_11_X64
+#         value: /usr/local/openjdk-17
+
+#     steps:
+#     - task: Maven@3
+#       displayName: 'Maven Package'
+#       inputs:
+#         mavenPomFile: 'pom.xml'
